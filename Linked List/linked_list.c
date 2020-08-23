@@ -57,6 +57,22 @@ void search(struct node *start,int val)
     printf("Element not found in the linked list");
 }//End of search function.
 
+struct node *add_at_end(struct node *start, int data)
+{
+    struct node *tmp;
+    struct node *p;
+    p = start;
+    tmp = (struct node *)malloc(sizeof(struct node));
+    tmp->info = data;
+    while(p->link != NULL)
+    {
+        p = p->link;
+    }
+    tmp->link = NULL;
+    p->link = tmp;
+    return start;
+    
+}
 
 int main()
 {
