@@ -16,22 +16,24 @@ void display(struct node *start)
     p = start;
     if (start == NULL)
     {
-        printf("List is empty")
+        printf("List is empty");
+        return;
     }
-    while(p->link != NULL)
+    while(p != NULL)
     {
         printf("%d",p->info);
+        p = p->link;
     }
-    p = p->link;
+    
 }// end of display function
 
 //Adding the element at the beginning of linked list 
 
-struct node add_at_beg(struct node*start,int value)
+struct node *add_at_beg(struct node*start,int value)
 {
-    struct *tmp;
+    struct node *tmp;
     tmp = (struct node *)malloc(sizeof(struct node));
-    tmp->info = data;
+    tmp->info = value;
     tmp->link = start;
     start = tmp;
     return start;
@@ -40,5 +42,24 @@ struct node add_at_beg(struct node*start,int value)
 //search function
 void search(struct node *start,int val)
 {
-    
+    struct node *p;
+    p = start;
+    int pos =1;
+    while(p->link != NULL){
+        if(p->info == val)
+        {
+            printf("Element found at index %d",pos);
+            return;
+        }
+        pos++;
+        p = p->link;
+    }
+    printf("Element not found in the linked list");
+}//End of search function.
+
+
+int main()
+{
+    struct node *start = NULL;
+    return 0;
 }
