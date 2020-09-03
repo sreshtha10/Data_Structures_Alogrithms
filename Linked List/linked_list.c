@@ -1,3 +1,5 @@
+// Linked List - Data Structures
+
 //linked list
 #include<stdio.h>
 #include<stdlib.h>
@@ -22,7 +24,7 @@ void display(struct node *start)
     }
     while(p != NULL)
     {
-        printf("%d",p->info);
+        printf("%d ",p->info);
         //After accessing the first element, we use link part of the structure to access the next element.
         p = p->link;
     }
@@ -79,10 +81,34 @@ struct node *add_at_end(struct node *start, int data)// To add an element at the
     
 }// end of the function
 
+//Insertion after a specified node.
 
+struct node* add_after(struct node *start,int node_data,int data){
+    struct node *tmp, *p;
+    p = start;
+    tmp = (struct node*)malloc(sizeof(struct node));
+    tmp->info = data;
+    while(p != NULL){
+        if(p->info == node_data){
+            tmp->link = p->link;
+            p->link = tmp;
+            return start;
+        }
+        p = p->link;
+    }
+    printf("Element not found !!\n");
+    return start;
+} // End of the function.
 
 int main()
 {
     struct node *start = NULL;
+    start = add_at_beg(start,1);
+    start = add_at_end(start,2);
+    start = add_at_end(start,3);
+    display(start);
+    printf("\n");
+    start = add_after(start,2,4);
+    display(start);
     return 0;
 }
