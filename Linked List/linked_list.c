@@ -1,17 +1,30 @@
-// Linked List - Data Structures
+// Singly Linked List - Data Structures
 
-//linked list
+
+/* List of functions created:
+    1. Display - To print the Singly Linked List.
+    2. add_at_beg - To insert element at the beginning of the list.
+    3. search - To search an element in the list.
+    4. add_at_end - To insert an element at the end of the list.
+    5. add_after - To insert an element after a particular node.
+    6. add_before - To insert an element before a particular node.
+    
+    
+*/
+
 #include<stdio.h>
-#include<stdlib.h>
+#include<stdlib.h> //I used dynamic memory allocation.
 
-//Node 
+
+//Node - An element of a linked list which contain two parts: 1. Data 2. Link to the next node.
 struct node {
     int info;
     struct node *link;
 };
 
-//Display or Print the linked list
 
+
+//Display or Print the linked list
 void display(struct node *start)
 {
     struct node *p;
@@ -31,8 +44,9 @@ void display(struct node *start)
     
 }// end of display function
 
-//Adding the element at the beginning of linked list 
 
+
+//Adding the element at the beginning of linked list 
 struct node *add_at_beg(struct node*start,int value)
 {
     //If we want to add a node at the beginning of linked list then we have start should point at this node and this node should point at the next node.
@@ -43,6 +57,8 @@ struct node *add_at_beg(struct node*start,int value)
     start = tmp;
     return start;
 }//End of add_at_beg function
+
+
 
 //search function
 void search(struct node *start,int val)
@@ -81,8 +97,9 @@ struct node *add_at_end(struct node *start, int data)// To add an element at the
     
 }// end of the function
 
-//Insertion after a specified node.
 
+
+//Insertion after a specified node.
 struct node* add_after(struct node *start,int node_data,int data){
     struct node *tmp, *p;
     p = start;
@@ -101,8 +118,8 @@ struct node* add_after(struct node *start,int node_data,int data){
 } // End of the function.
 
 
-//Insertion before a node
 
+//Insertion before a node
 struct node * add_before(struct node *start,int node_data,int data){
     struct node * tmp,*p;
     tmp = (struct node*)malloc(sizeof(struct node));
@@ -118,7 +135,12 @@ struct node * add_before(struct node *start,int node_data,int data){
     }
     printf("Element not found !! \n");
     return start;
-}
+}// End of function.
+
+
+
+//Insertion at a given position.
+
 
 int main()
 {
