@@ -100,6 +100,26 @@ struct node* add_after(struct node *start,int node_data,int data){
     return start;
 } // End of the function.
 
+
+//Insertion before a node
+
+struct node * add_before(struct node *start,int node_data,int data){
+    struct node * tmp,*p;
+    tmp = (struct node*)malloc(sizeof(struct node));
+    tmp->info = data;
+    p = start;
+    while(p != NULL){
+        if(p->link->info == node_data){
+            tmp->link = p->link;
+            p->link = tmp;
+            return start;
+        }
+        p = p->link;
+    }
+    printf("Element not found !! \n");
+    return start;
+}
+
 int main()
 {
     struct node *start = NULL;
@@ -110,5 +130,9 @@ int main()
     printf("\n");
     start = add_after(start,2,4);
     display(start);
+    start = add_before(start,2,10);
+    printf("\n");
+    display(start);
+    
     return 0;
 }
