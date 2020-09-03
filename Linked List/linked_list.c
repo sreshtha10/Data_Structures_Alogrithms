@@ -8,7 +8,7 @@
     4. add_at_end - To insert an element at the end of the list.
     5. add_after - To insert an element after a particular node.
     6. add_before - To insert an element before a particular node.
-    
+    7. add_at_pos - To insert an element at a particular position.
     
 */
 
@@ -161,24 +161,10 @@ struct node *add_at_pos(struct node *start,int pos,int data){
         p->link = tmp;
     }
     return start;   
-    
-}
+}// End of function.
 
 int main()
 {
     struct node *start = NULL;
-    start = add_at_beg(start,1);
-    start = add_at_end(start,2);
-    start = add_at_end(start,3);
-    display(start);
-    printf("\n");
-    start = add_after(start,2,4);
-    display(start);
-    start = add_before(start,2,10);
-    printf("\n");
-    display(start);
-    printf("\n");
-    start = add_at_pos(start,2,12);
-    display(start);
     return 0;
 }
