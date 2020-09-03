@@ -140,7 +140,29 @@ struct node * add_before(struct node *start,int node_data,int data){
 
 
 //Insertion at a given position.
-
+struct node *add_at_pos(struct node *start,int pos,int data){
+    struct node * tmp,* p;
+    p = start;
+    tmp =(struct node*)malloc(sizeof(struct node));
+    tmp->info = data;
+    if(pos == 1){
+        tmp->link = start;
+        start = tmp;
+        return start; 
+    }
+    for(int i = 0;i<pos-1 && p != NULL;i++){
+        p = p->link;
+    }
+    if(p == NULL){
+        printf("There are less than %d elements\n",pos);
+    }
+    else{
+        tmp->link = p->link;
+        p->link = tmp;
+    }
+    return start;   
+    
+}
 
 int main()
 {
@@ -155,6 +177,8 @@ int main()
     start = add_before(start,2,10);
     printf("\n");
     display(start);
-    
+    printf("\n");
+    start = add_at_pos(start,2,12);
+    display(start);
     return 0;
 }
