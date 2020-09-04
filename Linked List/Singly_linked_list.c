@@ -170,22 +170,30 @@ struct node * delete(struct node*start,int data){
         printf("List is already empty !!\n");
         return start;
     }
+    // Deleting the first node.
     if(start->info == data){
         tmp = start;
         start = start->link;
         free(tmp);
         return start;
     }
+    //Deletion at the end.
+    p = start;
+    while(p->link != NULL){
+        if(p->link->info == data){
+            tmp = p->link;
+            p->link = tmp->link;
+            free(tmp);
+            return start;
+        }
+        p = p->link;
+    }
+    printf("Element not found !!\n");
+    return start;
 }
 
 int main()
 {
     struct node *start = NULL;
-    start = add_at_beg(start,1);
-    start = add_at_end(start,2);
-    start = add_at_end(start,3);
-    display(start);
-    start = delete(start,1);
-    display(start);
     return 0;
 }
