@@ -41,6 +41,7 @@ void display(struct node *start)
         //After accessing the first element, we use link part of the structure to access the next element.
         p = p->link;
     }
+    printf("\n");
     
 }// end of display function
 
@@ -163,8 +164,28 @@ struct node *add_at_pos(struct node *start,int pos,int data){
     return start;   
 }// End of function.
 
+struct node * delete(struct node*start,int data){
+    struct node*tmp,*p;
+    if(start == NULL){
+        printf("List is already empty !!\n");
+        return start;
+    }
+    if(start->info == data){
+        tmp = start;
+        start = start->link;
+        free(tmp);
+        return start;
+    }
+}
+
 int main()
 {
     struct node *start = NULL;
+    start = add_at_beg(start,1);
+    start = add_at_end(start,2);
+    start = add_at_end(start,3);
+    display(start);
+    start = delete(start,1);
+    display(start);
     return 0;
 }
