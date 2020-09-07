@@ -191,9 +191,29 @@ struct node * delete(struct node*start,int data){
     printf("Element not found !!\n");
     return start;
 }
+//Reversing the linked List
 
+struct node* reverse(struct node*start){
+    struct node* prev,*next,*current;
+    prev = NULL;
+    current = start;
+    while(current != NULL){
+        next = current->link;
+        current->link = prev;
+        prev = current;
+        current = next;
+    }
+    start = prev;
+    return start;
+}
 int main()
 {
     struct node *start = NULL;
+    start = add_at_beg(start,1);
+    start = add_at_end(start,2);
+    start = add_at_end(start,3);
+    start = reverse(start);
+    display(start);
+    
     return 0;
 }
