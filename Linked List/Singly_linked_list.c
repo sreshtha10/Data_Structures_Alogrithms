@@ -9,6 +9,9 @@
     5. add_after - To insert an element after a particular node.
     6. add_before - To insert an element before a particular node.
     7. add_at_pos - To insert an element at a particular position.
+    8. reverse_by_iteration - To reverse a linked list using iteration.
+    9. reverse_by_recursion - To reverse a linked list using iteration.
+    
     
 */
 
@@ -191,9 +194,9 @@ struct node * delete(struct node*start,int data){
     printf("Element not found !!\n");
     return start;
 }
-//Reversing the linked List
+//Reversing the linked List using Iteration.
 
-struct node* reverse(struct node*start){
+struct node* reverse_by_iteration(struct node*start){
     struct node* prev,*next,*current;
     prev = NULL;
     current = start;
@@ -206,14 +209,12 @@ struct node* reverse(struct node*start){
     start = prev;
     return start;
 }
+
+//Reversing using recursion.
+    
+}
 int main()
 {
     struct node *start = NULL;
-    start = add_at_beg(start,1);
-    start = add_at_end(start,2);
-    start = add_at_end(start,3);
-    start = reverse(start);
-    display(start);
-    
     return 0;
 }
