@@ -1,4 +1,17 @@
 //Doubly Linked List
+
+/*Functions used:
+    1. Display - To print the Doubly Linked List.
+    2. add_to_empty - To insert an element in an empty List.
+    3. add_at_beg - To insert element at the beginning of the list.
+    4. add_at_end - To insert an element at the end of the list.
+    5. add_after - To insert an element after a particular node.
+    6. add_before - To insert an element before a particular node.
+            
+            
+            
+            */
+    
 #include<stdio.h>
 #include<stdlib.h>
 typedef struct node {
