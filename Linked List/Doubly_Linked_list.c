@@ -65,6 +65,28 @@ Node* add_at_end(Node* start,int data){
     return start;
 }
 
+//Insert after the Node
+
+Node* add_after(Node* start,int data,int q){
+    Node* tmp,*p;
+    p = start;
+    tmp =(Node*)malloc(sizeof(Node));
+    tmp->info =data;
+    while(p !=NULL){
+        if(p->info == q){
+            tmp->next = p->next;
+            tmp->prev = p;
+            if(p->next != NULL){
+                p->next->prev = tmp;
+            }
+            p->next = tmp;
+            return start;
+        }
+        p = p->next;
+    }
+    printf("Element not found\n");
+    return start;
+}
 
 
 int main(){
@@ -72,6 +94,7 @@ int main(){
     start = add_to_empty(start,1);
     start = add_at_end(start,2);
     start = add_at_end(start,3);
+    start = add_after(start,6,2);
     printList(start);
     return 0;
 }
