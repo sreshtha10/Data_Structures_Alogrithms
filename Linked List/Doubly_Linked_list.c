@@ -7,6 +7,9 @@
     4. add_at_end - To insert an element at the end of the list.
     5. add_after - To insert an element after a particular node.
     6. add_before - To insert an element before a particular node.
+    7. delete - To delete a node from the linked list.
+    8. reverseList - To reverse the list.
+    9. printReverse - To print the list in reverse.
     */
     
 #include<stdio.h>
