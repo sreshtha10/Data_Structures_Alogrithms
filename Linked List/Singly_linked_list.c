@@ -35,7 +35,20 @@ void printList(Node* start){
     printf("\n");
     return;
 }
+//Printing the list in reverse order.
 
+void printReverse(Node* start){
+    Node*p;
+    p = start;
+    while(p->next != NULL){
+        p = p->next;
+    }
+    while(p != NULL){
+        printf("%d ",p->info);
+        p = p->prev;
+    }
+    printf("\n");
+}
 
 
 //Insert in the empty list 
@@ -207,6 +220,7 @@ int main(){
     start = add_at_end(start,3);
     start = reverseList(start);
     printList(start);
+    printReverse(start);
     
     return 0;
 }
