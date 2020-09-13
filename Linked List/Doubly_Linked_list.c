@@ -7,7 +7,6 @@
     4. add_at_end - To insert an element at the end of the list.
     5. add_after - To insert an element after a particular node.
     6. add_before - To insert an element before a particular node.
-    7. delete - To delete a node from the linked list.
     */
     
 #include<stdio.h>
@@ -133,7 +132,54 @@ Node* add_before(Node* start,int data,int item){
 }
 
 //Deletion of a node.
-
+Node* delete(Node* start,int data){
+    Node*tmp;
+    //Case 1 when list is empty
+    if(start == NULL){
+        printf("List is already empty\n");
+        return start;
+    }
+    //Case 2 Deletion of the only node
+    if(start->next == NULL){
+        if(start->info == data){
+            tmp = start;
+            start = NULL;
+            free(tmp);
+            return start;
+        }
+        else{
+            printf("Element not found\n");
+            return start;
+        }
+    }
+    //Case 3 Deletion of the first Node
+    if(start->info == data){
+        tmp = start;
+        start = start->next;
+        free(tmp);
+        return start;
+    }
+    //Case 4 Deletion of any node in the middle
+    tmp = start->next;
+    while(tmp->next!=NULL){
+        if(tmp->info == data){
+            tmp->next->prev = tmp->prev;
+            tmp->prev->next = tmp->next;
+            free(tmp);
+            return start;
+        }
+        tmp = tmp->next;
+    }
+    //Case 5 Deletion of the last Node
+    if(tmp->next == NULL && tmp->info == data){
+        tmp->prev->next = NULL;
+        free(tmp);
+        return start;
+    }
+    printf("Element not found !\n");
+    return start;
+    
+}
 
 int main(){
     Node *start = NULL;
@@ -141,6 +187,11 @@ int main(){
     start = add_at_end(start,2);
     start = add_at_end(start,3);
     start = add_before(start,6,2);
+    start = delete(start,6);
+    start = delete(start,1);
+    start = delete(start,3);
+    start = delete(start,2);
     printList(start);
+    
     return 0;
 }
