@@ -88,13 +88,45 @@ Node* add_after(Node* start,int data,int q){
     return start;
 }
 
+//Insert before a Node
+
+Node* add_before(Node* start,int data,int item){
+    Node* p,*tmp;
+    tmp = (Node*)malloc(sizeof(Node));
+    tmp->info = data;
+    if(start == NULL){
+        printf("List is empty\n");
+        return start;
+    }
+    p = start;
+    if(start->info == item){
+        tmp->next = start;
+        tmp->prev = NULL;
+        start->prev = tmp;
+        start = tmp;
+        return start;
+    }
+    while(p!=NULL){
+        if(p->info == item){
+            tmp->next = p;
+            tmp->prev = p->prev;
+            p->prev->next = tmp;
+            p->prev = tmp;
+            return start;
+        }
+        p = p->next;
+    }
+    printf("Element not found\n");
+    return start;
+    
+}
 
 int main(){
     Node *start = NULL;
     start = add_to_empty(start,1);
     start = add_at_end(start,2);
     start = add_at_end(start,3);
-    start = add_after(start,6,2);
+    start = add_before(start,6,2);
     printList(start);
     return 0;
 }
