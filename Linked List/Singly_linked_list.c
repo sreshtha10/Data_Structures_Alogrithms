@@ -1,226 +1,220 @@
-//Doubly Linked List
+// Singly Linked List - Data Structures
 
-/*Functions used:
-    1. Display - To print the Doubly Linked List.
-    2. add_to_empty - To insert an element in an empty List.
-    3. add_at_beg - To insert element at the beginning of the list.
+
+/* List of functions created:
+    1. Display - To print the Singly Linked List.
+    2. add_at_beg - To insert element at the beginning of the list.
+    3. search - To search an element in the list.
     4. add_at_end - To insert an element at the end of the list.
     5. add_after - To insert an element after a particular node.
     6. add_before - To insert an element before a particular node.
-    8. reverseList - To reverse the list.
-    9. printReverse - To print the list in reverse.
-    */
+    7. add_at_pos - To insert an element at a particular position.
+    8. reverse_by_iteration - To reverse a linked list using iteration.
+    9. reverse_by_recursion - To reverse a linked list using iteration.
     
+    
+*/
+
 #include<stdio.h>
-#include<stdlib.h>
-typedef struct node {
-    struct node *prev;
+#include<stdlib.h> //I used dynamic memory allocation.
+
+
+//Node - An element of a linked list which contain two parts: 1. Data 2. Link to the next node.
+struct node {
     int info;
-    struct node *next;
-}Node;
+    struct node *link;
+};
 
 
-//Printing the list 
-void printList(Node* start){
-    Node *p;
+
+//Display or Print the linked list
+void display(struct node *start)
+{
+    struct node *p;
     p = start;
-    if(start == NULL){
-        printf("List is empty\n");
+    //If the start pointer points to nothing then list is empty.
+    if (start == NULL)
+    {
+        printf("List is empty");
         return;
     }
-    while(p!=NULL){
+    while(p != NULL)
+    {
         printf("%d ",p->info);
-        p = p->next;
+        //After accessing the first element, we use link part of the structure to access the next element.
+        p = p->link;
     }
     printf("\n");
-    return;
-}
-//Printing the list in reverse order.
-
-void printReverse(Node* start){
-    Node*p;
-    p = start;
-    while(p->next != NULL){
-        p = p->next;
-    }
-    while(p != NULL){
-        printf("%d ",p->info);
-        p = p->prev;
-    }
-    printf("\n");
-}
+    
+}// end of display function
 
 
-//Insert in the empty list 
 
-Node *add_to_empty(Node* start,int data){
-    Node * tmp = (Node*)malloc(sizeof(Node));
-    tmp->info = data;
-    tmp->next = NULL;
-    tmp->prev = NULL;
+//Adding the element at the beginning of linked list 
+struct node *add_at_beg(struct node*start,int value)
+{
+    //If we want to add a node at the beginning of linked list then we have start should point at this node and this node should point at the next node.
+    struct node *tmp;
+    tmp = (struct node *)malloc(sizeof(struct node));
+    tmp->info = value;
+    tmp->link = start;
     start = tmp;
     return start;
-}
-
-//Insert at beg of the list
-Node * add_at_beg(Node *start,int data){
-    Node *tmp = (Node*)malloc(sizeof(Node));
-    tmp->info = data;
-    tmp->next = start;
-    tmp->prev = NULL;
-    start->prev = tmp;
-    start = tmp;
-    return start;
-}
+}//End of add_at_beg function
 
 
-//Insert at end
 
-Node* add_at_end(Node* start,int data){
-    Node* tmp,*p;
-    tmp =(Node*)malloc(sizeof(Node));
-    tmp->info = data;
+//search function
+void search(struct node *start,int val)
+{
+    struct node *p;
     p = start;
-    while(p->next != NULL){
-        p = p->next;
-    }
-    tmp->next = p->next;
-    tmp->prev = p;
-    p->next = tmp;
-    return start;
-}
-
-//Insert after the Node
-
-Node* add_after(Node* start,int data,int q){
-    Node* tmp,*p;
-    p = start;
-    tmp =(Node*)malloc(sizeof(Node));
-    tmp->info =data;
-    while(p !=NULL){
-        if(p->info == q){
-            tmp->next = p->next;
-            tmp->prev = p;
-            if(p->next != NULL){
-                p->next->prev = tmp;
-            }
-            p->next = tmp;
-            return start;
+    int pos =1;
+    while(p->link != NULL){
+        if(p->info == val)
+        {
+            printf("Element found at index %d",pos);
+            return;
         }
-        p = p->next;
+        pos++;
+        p = p->link;
     }
-    printf("Element not found\n");
-    return start;
-}
+    printf("Element not found in the linked list");
+}//End of search function.
 
-//Insert before a Node
 
-Node* add_before(Node* start,int data,int item){
-    Node* p,*tmp;
-    tmp = (Node*)malloc(sizeof(Node));
-    tmp->info = data;
-    if(start == NULL){
-        printf("List is empty\n");
-        return start;
-    }
+//function to add element at the end of linked list
+struct node *add_at_end(struct node *start, int data)// To add an element at the end of the linked list first we need to find the last element and then point the last element to the new node and new node to null.
+{
+    struct node *tmp;
+    struct node *p;
     p = start;
-    if(start->info == item){
-        tmp->next = start;
-        tmp->prev = NULL;
-        start->prev = tmp;
-        start = tmp;
-        return start;
+    tmp = (struct node *)malloc(sizeof(struct node));
+    tmp->info = data;
+    while(p->link != NULL)
+    {
+        p = p->link;
     }
-    while(p!=NULL){
-        if(p->info == item){
-            tmp->next = p;
-            tmp->prev = p->prev;
-            p->prev->next = tmp;
-            p->prev = tmp;
-            return start;
-        }
-        p = p->next;
-    }
-    printf("Element not found\n");
+    tmp->link = NULL;
+    p->link = tmp;
     return start;
     
-}
+}// end of the function
 
-//Deletion of a node.
-Node* delete(Node* start,int data){
-    Node*tmp;
-    //Case 1 when list is empty
+
+
+//Insertion after a specified node.
+struct node* add_after(struct node *start,int node_data,int data){
+    struct node *tmp, *p;
+    p = start;
+    tmp = (struct node*)malloc(sizeof(struct node));
+    tmp->info = data;
+    while(p != NULL){
+        if(p->info == node_data){
+            tmp->link = p->link;
+            p->link = tmp;
+            return start;
+        }
+        p = p->link;
+    }
+    printf("Element not found !!\n");
+    return start;
+} // End of the function.
+
+
+
+//Insertion before a node
+struct node * add_before(struct node *start,int node_data,int data){
+    struct node * tmp,*p;
+    tmp = (struct node*)malloc(sizeof(struct node));
+    tmp->info = data;
+    p = start;
+    while(p != NULL){
+        if(p->link->info == node_data){
+            tmp->link = p->link;
+            p->link = tmp;
+            return start;
+        }
+        p = p->link;
+    }
+    printf("Element not found !! \n");
+    return start;
+}// End of function.
+
+
+
+//Insertion at a given position.
+struct node *add_at_pos(struct node *start,int pos,int data){
+    struct node * tmp,* p;
+    p = start;
+    tmp =(struct node*)malloc(sizeof(struct node));
+    tmp->info = data;
+    if(pos == 1){
+        tmp->link = start;
+        start = tmp;
+        return start; 
+    }
+    for(int i = 0;i<pos-1 && p != NULL;i++){
+        p = p->link;
+    }
+    if(p == NULL){
+        printf("There are less than %d elements\n",pos);
+    }
+    else{
+        tmp->link = p->link;
+        p->link = tmp;
+    }
+    return start;   
+}// End of function.
+
+struct node * delete(struct node*start,int data){
+    struct node*tmp,*p;
     if(start == NULL){
-        printf("List is already empty\n");
+        printf("List is already empty !!\n");
         return start;
     }
-    //Case 2 Deletion of the only node
-    if(start->next == NULL){
-        if(start->info == data){
-            tmp = start;
-            start = NULL;
-            free(tmp);
-            return start;
-        }
-        else{
-            printf("Element not found\n");
-            return start;
-        }
-    }
-    //Case 3 Deletion of the first Node
+    // Deleting the first node.
     if(start->info == data){
         tmp = start;
-        start = start->next;
+        start = start->link;
         free(tmp);
         return start;
     }
-    //Case 4 Deletion of any node in the middle
-    tmp = start->next;
-    while(tmp->next!=NULL){
-        if(tmp->info == data){
-            tmp->next->prev = tmp->prev;
-            tmp->prev->next = tmp->next;
+    //Deletion at the end.
+    p = start;
+    while(p->link != NULL){
+        if(p->link->info == data){
+            tmp = p->link;
+            p->link = tmp->link;
             free(tmp);
             return start;
         }
-        tmp = tmp->next;
+        p = p->link;
     }
-    //Case 5 Deletion of the last Node
-    if(tmp->next == NULL && tmp->info == data){
-        tmp->prev->next = NULL;
-        free(tmp);
-        return start;
-    }
-    printf("Element not found !\n");
+    printf("Element not found !!\n");
     return start;
-    
 }
+//Reversing the linked List using Iteration.
 
-//Reversing the linked list 
-
-Node* reverseList(Node* start){
-    Node* p,*n,*current;
+struct node* reverse_by_iteration(struct node*start){
+    struct node* prev,*next,*current;
+    prev = NULL;
     current = start;
-    p = NULL;
     while(current != NULL){
-        n = current->next;
-        current->next = p;
-        current->prev = n;
-        p = current;
-        current = n;
+        next = current->link;
+        current->link = prev;
+        prev = current;
+        current = next;
     }
-    start = p;
+    start = prev;
     return start;
 }
 
-int main(){
-    Node *start = NULL;
-    start = add_to_empty(start,1);
-    start = add_at_end(start,2);
-    start = add_at_end(start,3);
-    start = reverseList(start);
-    printList(start);
-    printReverse(start);
+//Reversing using recursion.
     
+}
+int main()
+{
+    struct node *start = NULL;
     return 0;
 }
