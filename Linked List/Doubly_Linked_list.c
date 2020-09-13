@@ -7,7 +7,6 @@
     4. add_at_end - To insert an element at the end of the list.
     5. add_after - To insert an element after a particular node.
     6. add_before - To insert an element before a particular node.
-    7. delete - To delete a node from the linked list.
     8. reverseList - To reverse the list.
     9. printReverse - To print the list in reverse.
     */
@@ -36,7 +35,20 @@ void printList(Node* start){
     printf("\n");
     return;
 }
+//Printing the list in reverse order.
 
+void printReverse(Node* start){
+    Node*p;
+    p = start;
+    while(p->next != NULL){
+        p = p->next;
+    }
+    while(p != NULL){
+        printf("%d ",p->info);
+        p = p->prev;
+    }
+    printf("\n");
+}
 
 
 //Insert in the empty list 
@@ -184,17 +196,31 @@ Node* delete(Node* start,int data){
     
 }
 
+//Reversing the linked list 
+
+Node* reverseList(Node* start){
+    Node* p,*n,*current;
+    current = start;
+    p = NULL;
+    while(current != NULL){
+        n = current->next;
+        current->next = p;
+        current->prev = n;
+        p = current;
+        current = n;
+    }
+    start = p;
+    return start;
+}
+
 int main(){
     Node *start = NULL;
     start = add_to_empty(start,1);
     start = add_at_end(start,2);
     start = add_at_end(start,3);
-    start = add_before(start,6,2);
-    start = delete(start,6);
-    start = delete(start,1);
-    start = delete(start,3);
-    start = delete(start,2);
+    start = reverseList(start);
     printList(start);
+    printReverse(start);
     
     return 0;
 }
