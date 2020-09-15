@@ -76,6 +76,45 @@ Node* add_after(Node * last,int data,int item){
     
 }
 
+Node * delete(Node* last,int data){
+    Node *tmp,*p;
+    if(last == NULL){
+        printf("List is empty\n");
+        return last;
+    }
+    if(last->link == last && last->info == data){
+        tmp = last;
+        last = NULL;
+        free(tmp);
+        return last;
+    }
+    if(last->link->info == data){
+        tmp = last->link;
+        last->link = tmp->link;
+        free(tmp);
+        return last;
+    }
+    p = last->link;
+    while(p->link != last){
+        if(p->link->info == data){
+            tmp = p->link;
+            p->link = tmp->link;
+            free(tmp);
+            return last;
+        }
+        p = p->link;
+    }
+    if(last->info == data){
+        tmp = last;
+        p->link = last->link;
+        last = p;
+        free(tmp);
+        return last;
+    }
+    printf("Element not found\n");
+    return last;
+    
+}
 
 
 int main(void){
@@ -85,6 +124,7 @@ int main(void){
     last = add_at_end(last,3);
     last = add_at_end(last,4);
     last = add_after(last,6,2);
+    last = delete(last,6);
     display(last);
     return 0;
 }
