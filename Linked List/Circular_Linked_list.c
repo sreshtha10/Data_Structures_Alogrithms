@@ -55,12 +55,36 @@ Node* add_at_end(Node* last,int data){
     return last;
 }
 
+
+Node* add_after(Node * last,int data,int item){
+    Node * p,*tmp = (Node*)malloc(sizeof(Node));
+    tmp->info = data;
+    p = last->link;
+    do{
+        if(p->info == item){
+            tmp->link = p->link;
+            p->link = tmp;
+            if(p == last){
+                last = tmp;
+            }
+            return last;
+        }
+        p = p->link;
+    }while(p!=last->link);
+    printf("Element not found\n");
+    return last;
+    
+}
+
+
+
 int main(void){
     Node* last = NULL;
     last = add_to_empty(last,1);
     last = add_at_end(last,2);
     last = add_at_end(last,3);
     last = add_at_end(last,4);
+    last = add_after(last,6,2);
     display(last);
     return 0;
 }
