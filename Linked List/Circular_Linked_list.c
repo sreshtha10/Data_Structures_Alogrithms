@@ -10,6 +10,6 @@ typedef struct node{
 }Node;
 
 int main(void){
-    Node* start = NULL;
+    Node* last = NULL;
     return 0;
 }
