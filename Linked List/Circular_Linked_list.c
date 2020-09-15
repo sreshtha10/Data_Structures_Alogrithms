@@ -45,10 +45,22 @@ Node* add_to_beg(Node* last,int data){
     return last;
 }
 
+
+Node* add_at_end(Node* last,int data){
+    Node* tmp = (Node*)malloc(sizeof(Node));
+    tmp->info = data;
+    tmp->link = last->link;
+    last->link = tmp;
+    last = tmp;
+    return last;
+}
+
 int main(void){
     Node* last = NULL;
     last = add_to_empty(last,1);
-    last = add_to_beg(last,2);
+    last = add_at_end(last,2);
+    last = add_at_end(last,3);
+    last = add_at_end(last,4);
     display(last);
     return 0;
 }
