@@ -2,7 +2,15 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-
+/* Fucntions used:
+        1. display - To print Circular Linked List.
+        2. add_to_empty -  Insert an Element to an empty List.
+        3. add_to_beg - add a node to the beginning of the List.
+        4. add_at_end - add a node to the end of the List.
+        5. add_after - add a node after a particular node.
+        6. delete - to delete a node.
+        
+        */
 
 typedef struct node{
     int info;
