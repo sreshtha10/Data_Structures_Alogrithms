@@ -68,6 +68,33 @@ Node* addatpos(Node* head,int data,int pos){
     return head;
 }
 
+Node* delete(Node* head,int data){
+    Node *p,*tmp;
+    if(head->link == NULL){
+        printf("List is already empty\n");
+        return  head;
+    }
+    if(head->link->info == data){
+        tmp = head->link;
+        head->link = tmp->link;
+        free(tmp);
+        return head;
+    }
+    p = head->link;
+    while(p != NULL){
+        if(p->link->info == data){
+            tmp = p->link;
+            p->link = tmp->link;
+            free(tmp);
+            return head;
+        }
+        p = p->link;
+    }
+    printf("Element not found\n");
+    return head;
+}
+
+
 
 
 int main(void){
@@ -78,6 +105,7 @@ int main(void){
     head = addatend(head,2);
     head = addbefore(head,3,2);
     head = addatpos(head,6,2);
+    head = delete(head,2);
     display(head);
     
     return 0;
