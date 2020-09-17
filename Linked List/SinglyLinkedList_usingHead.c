@@ -95,6 +95,20 @@ Node* delete(Node* head,int data){
 }
 
 
+Node* reverse(Node* head){
+    Node* p,*n,*curr;
+    curr = head->link;
+    p = NULL;
+    while(curr != NULL){
+        n = curr->link;
+        curr->link = p;
+        p = curr;
+        curr = n;
+    }
+    head->link = p;
+    return head;
+}
+
 
 
 int main(void){
@@ -105,7 +119,7 @@ int main(void){
     head = addatend(head,2);
     head = addbefore(head,3,2);
     head = addatpos(head,6,2);
-    head = delete(head,2);
+    head = reverse(head);
     display(head);
     
     return 0;
