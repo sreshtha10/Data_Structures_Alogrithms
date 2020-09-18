@@ -22,6 +22,9 @@ class LinkedList{
         
         public void print(){
             Node p = head;
+            if(head == null){
+                System.out.println("List is empty");
+            }
             while(p!= null){
                 System.out.println(p.data+" ");
                 p = p.next;
@@ -56,6 +59,31 @@ class LinkedList{
                 count++;
             }
         }
+        public void delete(int data){
+            Node p = new Node();
+            Node tmp = new Node();
+            p = head;
+            if(head == null){
+                System.out.println("List is empty");
+                return;
+            }
+            if(head.data == data){
+                head = head.next;
+                return;
+            }
+            while(p.next!= null){
+                if(p.next.data == data){
+                    tmp = p.next;
+                    p.next = tmp.next;
+                    return;
+                }
+                p = p.next;
+            }
+            
+            
+            
+        }
+        
 }
 
 
@@ -66,6 +94,7 @@ public class Main{
         linkedlist.insert(2);
         linkedlist.insertStart(3);
         linkedlist.insertPos(2,9);
+        linkedlist.delete(9);
         linkedlist.print();
     }
 }
