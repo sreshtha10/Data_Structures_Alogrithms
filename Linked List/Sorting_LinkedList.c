@@ -100,12 +100,31 @@ Node* bubbleSort_data(Node* start){
 }
 
 
+//Selection Sort using rearranging the links
 
-
-
-
-
-
+Node* selectionSort_link(Node* start){
+    Node *p,*q,*r,*s,*tmp;
+    for(r = p = start;p->link!= NULL;r=p,p=p->link){
+        for(s = q = p->link;q!=NULL;s=q,q = q->link){
+            if(p->info > q->info){
+                tmp = p->link;
+                p->link = q->link;
+                q->link = tmp;
+                s->link= p;
+                if(p != start){
+                    r->link= q;
+                }
+                if(p == start){
+                    start = q;
+                }
+                tmp = p;
+                p = q;
+                q = tmp;
+            }
+        }
+    }
+    return start;
+}
 
 
 
