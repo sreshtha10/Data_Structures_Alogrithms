@@ -82,7 +82,22 @@ Node* selectionSort_data(Node* start){
 
 
 
-
+Node* bubbleSort_data(Node* start){
+    int tmp;
+    Node* p,*q,*end;
+    for(end = NULL;end != start->link;end =q){
+            for(p = start;p->link != end;p = p->link){
+                q = p->link;
+                if(p->info > q->info){
+                    tmp = p->info;
+                    p->info = q->info;
+                    q->info = tmp;
+                }
+            
+            }
+        }
+    return start;
+}
 
 
 
@@ -101,7 +116,7 @@ int main(void){
     start = add_at_end(start,1);
     start = add_at_end(start,0);
     start = add_at_end(start,11);
-    selectionSort_data(start);
+    bubbleSort_data(start);
     display(start);
     return 0;
 }
