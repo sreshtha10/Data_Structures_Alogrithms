@@ -34,6 +34,28 @@ class LinkedList{
             head = p;
             
         }
+        public void insertPos(int pos,int data){
+            Node p = new Node();
+            Node tmp = new Node();
+            int count = 0;
+            p = head;
+            if(pos == 0){
+                tmp.data = data;
+                tmp.next = head;
+                head = tmp;
+                return;
+            }
+            while(p!= null){
+                if(count == pos-1){
+                    tmp.data = data;
+                    tmp.next = p.next;
+                    p.next = tmp;
+                    return;
+                }
+                p = p.next;
+                count++;
+            }
+        }
 }
 
 
@@ -43,6 +65,7 @@ public class Main{
         linkedlist.insert(1);
         linkedlist.insert(2);
         linkedlist.insertStart(3);
+        linkedlist.insertPos(2,9);
         linkedlist.print();
     }
 }
