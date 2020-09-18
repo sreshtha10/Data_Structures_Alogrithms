@@ -11,6 +11,7 @@
     7. add_at_pos - To insert an element at a particular position.
     8. reverse_by_iteration - To reverse a linked list using iteration.
     9. reverse_by_recursion - To reverse a linked list using iteration.
+    10. insert_sorted - To insert elements in sorted manner.
     
     
 */
@@ -210,11 +211,34 @@ struct node* reverse_by_iteration(struct node*start){
     return start;
 }
 
-//Reversing using recursion.
+
+//Insert elements in sorted manner.    
     
-}
+struct node *insert_sorted(struct node* start ,int data){
+    struct node *p,*tmp;
+    tmp =(struct node*)malloc(sizeof(struct node));
+    // Adding the node to the beginning of the linked list
+    if(start == NULL || data < start->info){
+        tmp->info = data;
+        tmp->link = start;
+        start = tmp;
+        return start;
+    }
+    p = start;
+    while(p->link!=NULL && p->link->info < data){
+        p = p->link;
+    }
+    tmp->info = data;
+    tmp->link = p->link;
+    p->link= tmp;
+    return start;
+}    
+
+
+    
 int main()
 {
+    
     struct node *start = NULL;
     return 0;
 }
