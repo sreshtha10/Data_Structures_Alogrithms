@@ -79,9 +79,8 @@ class LinkedList{
                 }
                 p = p.next;
             }
-            
-            
-            
+            System.out.println("Element not found");
+            return;
         }
         
 }
@@ -94,7 +93,7 @@ public class Main{
         linkedlist.insert(2);
         linkedlist.insertStart(3);
         linkedlist.insertPos(2,9);
-        linkedlist.delete(9);
+        linkedlist.delete(5);
         linkedlist.print();
     }
 }
