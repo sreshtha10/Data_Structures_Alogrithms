@@ -127,6 +127,30 @@ Node* selectionSort_link(Node* start){
 }
 
 
+//Bubble sort by rearranging links
+
+Node * bubbleSort_link(Node* start){
+    Node * r,*p,*q,*tmp,*end;
+    for(end = NULL;end != start->link;end = q){
+        for(r = p = start;p->link!= end;p = p->link,r = p){
+            q = p->link;
+            if(p->info >q->info){
+                p->link = q->link;
+                q->link = p;
+                if(p != start){
+                    r->link = q;
+                }
+                else{
+                    start = q;
+                }
+                tmp = p;
+                p = q;
+                q = p;
+            }
+        }
+    }
+    return start;
+}
 
 
 int main(void){
