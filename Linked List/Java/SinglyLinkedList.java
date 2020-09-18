@@ -82,6 +82,21 @@ class LinkedList{
             System.out.println("Element not found");
             return;
         }
+        public void reverse(){
+            Node p = new Node();
+            Node n = new Node();
+            Node curr = new Node();
+            curr = head;
+            p = null;
+            while(curr != null){
+                n = curr.next;
+                curr.next = p;
+                p = curr;
+                curr = n;
+            }
+            head = p;
+            return;
+        }
         
 }
 
@@ -91,9 +106,10 @@ public class Main{
         LinkedList linkedlist = new LinkedList();
         linkedlist.insert(1);
         linkedlist.insert(2);
-        linkedlist.insertStart(3);
-        linkedlist.insertPos(2,9);
-        linkedlist.delete(5);
+        linkedlist.insert(3);
+        linkedlist.insert(4);
+        linkedlist.insert(5);
+        linkedlist.reverse();
         linkedlist.print();
     }
 }
