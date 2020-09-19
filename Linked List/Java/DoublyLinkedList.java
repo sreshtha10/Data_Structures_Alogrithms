@@ -6,7 +6,7 @@
         5. printReverse
         6. reverse
         7. insertSorted
-        
+        8. selectionSort
         */
 class LinkedList{
     class Node{
