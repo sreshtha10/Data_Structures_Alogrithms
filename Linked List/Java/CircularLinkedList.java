@@ -72,7 +72,19 @@ class CircularLinkedList{
             length--;
             return;
         }
-        
+        p = last.next;
+        while(p.next != last.next){
+            if(p.next.data == data ){
+                tmp = p.next;
+                p.next = tmp.next;
+                if(p.next == last){
+                    last = p;
+                }
+                length--;
+                return;
+            }
+            p = p.next;
+        }
     }
 }
 
@@ -80,7 +92,11 @@ public class Main{
     public static void main(String args[]){
         CircularLinkedList c = new CircularLinkedList();
         c.insert(1);
-        c.delete(1)
+        c.insert(2);
+        c.insert(3);
+        c.insert(4);
+        c.insert(5);
+        c.delete(5);
         c.print();
         
     }
