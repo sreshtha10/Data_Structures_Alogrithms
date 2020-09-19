@@ -166,18 +166,31 @@ class LinkedList{
             return;
         }
     }
-    
+    public void selectionSort(){
+        Node p;
+        Node q;
+        int tmp;
+        for(p = head;p.next != null;p = p.next){
+            for(q = p.next;q!=null;q=q.next){
+                if(p.data > q.data){
+                    tmp = p.data;
+                    p.data = q.data;
+                    q.data = tmp;
+                }
+            }
+        }
+        return;
+        
+    }
 }
 public class Main{
     public static void main(String args[]){
         LinkedList l = new LinkedList();
-        l.insertStart(1);
+        l.insert(10);
         l.insert(2);
         l.insert(4);
-        l.insert(5);
-        l.insertSorted(2);
+        l.insert(0);
+        l.selectionSort();
         l.print();
-
-        l.printReverse();
     }
 }
