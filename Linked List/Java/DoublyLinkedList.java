@@ -125,6 +125,22 @@ class LinkedList{
         return;
     }
     
+    public void insertSorted(int data){
+        Node tmp = new Node(data);
+        if(head == null || head.data > data){
+            tmp.next = head;
+            tmp.prev = null;
+            head.prev = tmp;
+            head = tmp;
+            if(head.next == null){
+                tail = tmp;
+            }
+            return;
+        }
+        
+        
+    }
+    
 }
 public class Main{
     public static void main(String args[]){
@@ -133,8 +149,9 @@ public class Main{
         l.insert(2);
         l.insert(4);
         l.insert(5);
+        l.insertSorted(0);
         l.print();
-        l.reverse();
+
         l.printReverse();
     }
 }
