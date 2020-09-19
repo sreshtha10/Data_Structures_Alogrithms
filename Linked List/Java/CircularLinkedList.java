@@ -49,15 +49,38 @@ class CircularLinkedList{
         length++;
         return;
     }
-    
+    public void delete(int data){
+        Node tmp,p;
+        if(last == null){
+            System.out.println("List is empty");
+            return;
+        }
+        if(last.next == last){
+            if( last.data == data){
+                last.next = null;
+                last = null;
+                length--;
+                return;
+            }
+            else{
+                System.out.println("Element not found");
+                return;
+            }
+        }
+        if(last.next.data == data){
+            last.next = last.next.next;
+            length--;
+            return;
+        }
+        
+    }
 }
 
 public class Main{
     public static void main(String args[]){
         CircularLinkedList c = new CircularLinkedList();
         c.insert(1);
-        c.insert(3);
-        c.insertStart(0);
+        c.delete(1)
         c.print();
         
     }
