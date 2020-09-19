@@ -1,3 +1,13 @@
+/* Functions created :
+        1. insert
+        2. insertStart
+        3. delete
+        4. print
+        5. printReverse
+        6. reverse
+        7. insertSorted
+        
+        */
 class LinkedList{
     class Node{
         int data;
