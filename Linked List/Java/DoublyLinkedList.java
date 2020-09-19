@@ -7,6 +7,8 @@
         6. reverse
         7. insertSorted
         8. selectionSort
+        9. bubbleSort
+        
         */
 class LinkedList{
     class Node{
@@ -180,7 +182,21 @@ class LinkedList{
             }
         }
         return;
-        
+    }
+    public void bubbleSort(){
+        Node p,q = null,end;
+        int tmp;
+        for(end = null;end != head.next;end = q){
+            for(p = head;p.next != end;p=p.next){
+                q = p.next;
+                if(p.data > q.data){
+                    tmp = p.data;
+                    p.data = q.data;
+                    q.data = tmp;
+                }
+            }
+        }
+        return;
     }
 }
 public class Main{
@@ -190,7 +206,7 @@ public class Main{
         l.insert(2);
         l.insert(4);
         l.insert(0);
-        l.selectionSort();
+        l.bubbleSort();
         l.print();
     }
 }
