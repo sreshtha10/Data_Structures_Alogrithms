@@ -36,6 +36,20 @@ class CircularLinkedList{
         length++;
         return;
     }
+    public void insertStart(int data){
+        Node tmp = new Node(data);
+        if(last == null){
+            last = tmp;
+            last.next = tmp;
+            length++;
+            return;
+        }
+        tmp.next = last.next;
+        last.next = tmp;
+        length++;
+        return;
+    }
+    
 }
 
 public class Main{
@@ -43,6 +57,7 @@ public class Main{
         CircularLinkedList c = new CircularLinkedList();
         c.insert(1);
         c.insert(3);
+        c.insertStart(0);
         c.print();
         
     }
