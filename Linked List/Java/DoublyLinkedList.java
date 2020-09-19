@@ -137,8 +137,24 @@ class LinkedList{
             }
             return;
         }
-        
-        
+        Node p = head.next;
+        while(p.data < data && p.next != null){
+            p = p.next;
+        }
+        if(tmp.data <= p.data){
+            tmp.next = p;
+            tmp.prev = p.prev;
+            p.prev.next= tmp;
+            p.prev = tmp;
+            return;
+        }
+        if(tmp.data > p.data){
+            tmp.next = null;
+            tmp.prev = p;
+            p.next = tmp;
+            tail = tmp;
+            return;
+        }
     }
     
 }
@@ -149,7 +165,7 @@ public class Main{
         l.insert(2);
         l.insert(4);
         l.insert(5);
-        l.insertSorted(0);
+        l.insertSorted(2);
         l.print();
 
         l.printReverse();
