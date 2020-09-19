@@ -65,6 +65,43 @@ class LinkedList{
             p = p.prev;
         }
     }
+    public void delete(int data){
+        Node p,tmp;
+        if(head == null){
+            System.out.println("List is empty");
+            return;
+        }
+        if(head.data ==  data){
+            if(head.next != null){
+                 head.next.prev = null;
+            }
+            head = head.next;
+            if(head == null){
+                tail = null;
+            }
+            return;
+        }
+        p = head.next;
+        while(p.next!= null){
+            if(p.data == data){
+                p.prev.next = p.next;
+                p.next.prev = p.prev;
+                return;
+            }
+            p = p.next;
+        }
+        if(p.data == data){
+            p.prev.next = null;
+            tail = p.prev;
+            return;
+        }
+        else{
+            System.out.println("Element not found");
+            return;
+        }
+        
+        
+    }
     
 }
 public class Main{
@@ -74,7 +111,8 @@ public class Main{
         l.insert(2);
         l.insert(4);
         l.insert(5);
+        l.delete(5);
         l.print();
-        
+        l.printReverse();
     }
 }
