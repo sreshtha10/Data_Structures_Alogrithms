@@ -79,6 +79,7 @@ class LinkedList{
             if(head == null){
                 tail = null;
             }
+            length--;
             return;
         }
         p = head.next;
@@ -86,6 +87,7 @@ class LinkedList{
             if(p.data == data){
                 p.prev.next = p.next;
                 p.next.prev = p.prev;
+                length--;
                 return;
             }
             p = p.next;
@@ -93,6 +95,7 @@ class LinkedList{
         if(p.data == data){
             p.prev.next = null;
             tail = p.prev;
+            length--;
             return;
         }
         else{
