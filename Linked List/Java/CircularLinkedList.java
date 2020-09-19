@@ -7,6 +7,7 @@ class CircularLinkedList{
         }
     }
     Node last = null;
+    int length = 0;
     public void print(){
         Node p;
         if(last == null){
@@ -16,6 +17,7 @@ class CircularLinkedList{
         p = last.next;
         do{
             System.out.println(p.data);
+            p = p.next;
         }while(p != last.next);
         return;
     }
@@ -25,9 +27,14 @@ class CircularLinkedList{
         if(last == null){
             last = tmp;
             last.next = tmp;
+            length++;
             return;
         }
-        
+        tmp.next = last.next;
+        last.next = tmp;
+        last = tmp;
+        length++;
+        return;
     }
 }
 
@@ -35,6 +42,7 @@ public class Main{
     public static void main(String args[]){
         CircularLinkedList c = new CircularLinkedList();
         c.insert(1);
+        c.insert(3);
         c.print();
         
     }
