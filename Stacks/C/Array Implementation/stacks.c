@@ -1,4 +1,11 @@
-// Array implementation of Stack
+/* Array implementation of Stack
+    Methods:
+        1. push - to insert an element at the top of the stack.
+        2. pop - to remove the element on the top of the stack.
+        3. peek - to return the element on the top of the stack.
+        4. display - to print the stack.
+        
+*/
 #include<stdio.h>
 #include<stdio.h>
 
