@@ -49,14 +49,23 @@ int pop(){
     return x;
 }
 
+int peek(){
+    if(top == NULL){
+        printf("Stack Underflow\n");
+        return;
+    }
+    return top->data;
+}
 
 
 int main(void){
     display();
     push(1);
     push(2);
+    push(3);
+    push(4);
+    push(5);
     display();
-    printf("%d\n",pop());
-    display();
+    printf("%d\n",peek());
     return 0;
 }
