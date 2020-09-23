@@ -38,9 +38,21 @@ int peek(){
 }
 
 void display(){
+    if(front == -1 || front == rear +1){
+        printf("Queue Underflow\n");
+        return;
+    }
+    for(int i = front;i<=rear;i++){
+        printf("%d ",q[i]);
+    }
+    printf("\n");
+    return;
     
 }
 
 int main(void){
-    
+    insert(1);
+    insert(2);
+    display();
+    return 0;
 }
