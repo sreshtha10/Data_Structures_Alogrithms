@@ -1,5 +1,10 @@
-// Array implementation of queue
-
+/* Array implementation of queue
+    Functions used - 
+            1. insert - To insert an element at the end of the queue
+            2. delete - to remove the first element of the queue
+            3. peek - to return the first element of the queue
+            4. display - to print the queue.
+*/
 #include<stdio.h>
 #define MAX 10
 int q[MAX];
