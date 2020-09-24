@@ -31,7 +31,22 @@ class Stack {
         top = tmp;
         return;
     }
-    
+    public int pop(){
+        if(top == null){
+            System.out.println("Stack Underflow");
+            return;
+        }
+        int x = top.data;
+        top = top.next;
+        return x;
+    }
+    public int peek(){
+        if(top == null){
+            System.out.println("Stack Underflow");
+            return;
+        }
+        return top.data;
+    }
     
 }
 
