@@ -34,7 +34,7 @@ class Stack {
     public int pop(){
         if(top == null){
             System.out.println("Stack Underflow");
-            return;
+            return -1;
         }
         int x = top.data;
         top = top.next;
@@ -43,25 +43,19 @@ class Stack {
     public int peek(){
         if(top == null){
             System.out.println("Stack Underflow");
-            return;
+            return -1;
         }
         return top.data;
     }
     
 }
-
-
-
-
-
-
-
 public class Main{
     public static void main(String args[]){
         Stack stack = new Stack();
         stack.push(1);
         stack.push(2);
         stack.push(3);
+        stack.pop();
         stack.display();
         
     }
