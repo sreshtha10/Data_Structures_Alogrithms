@@ -33,7 +33,22 @@ class Queue{
         rear = tmp;
         return;
     }
-    
+    public int delete(){
+        if(front == null){
+            System.out.println("Queue Underflow");
+            return -1;
+        }
+        int x = front.data;
+        front = front.next;
+        return x;
+    }
+    public int peek(){
+        if(front == null){
+            System.out.println("Queue Underflow");
+            return -1;
+        }
+        return front.data;
+    }
 }
 
 public class Main{
@@ -42,6 +57,8 @@ public class Main{
         q.insert(1);
         q.insert(2);
         q.insert(3);
+        q.delete();
+        System.out.println(q.peek());
         q.display();
     }
 }
