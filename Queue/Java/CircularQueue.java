@@ -14,7 +14,7 @@ class CircularQueue{
         return false;
     }
     public boolean isFull(){
-        if(front == rear +1 || front == 0 && rear = this.size -1){
+        if(front == rear +1 || front == 0 && rear == this.size -1){
             return true;
         }
         return false;
@@ -63,12 +63,37 @@ class CircularQueue{
         return x;
     }
     public void display(){
-        
+        if(this.isEmpty()){
+            System.out.println("Queue Underflow");
+            return;
+        }
+        int i = front;
+        if(front<= rear){
+            while(i<=rear){
+                System.out.println(arr[i++]);
+            }
+        }
+        else{
+            while(i<=this.size-1){
+                System.out.println(arr[i++]);
+            }
+            i = 0;
+            while(i<=rear){
+                System.out.println(arr[i++]);
+            }
+        }
+        return;
     }
 }
 public class Main{
     public static void main(String args[]){
         CircularQueue c = new CircularQueue(10);
+        c.insert(1);
+        c.insert(2);
+        c.insert(3);
+        c.display();
+        c.delete();
+        c.delete();
         
     }
 }
