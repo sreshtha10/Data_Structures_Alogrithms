@@ -27,7 +27,34 @@ class PriorityQueue{
         return;
     }
     
-    
+    public void insert(int data,int pr){
+        Node tmp = new Node(data,pr);
+        if(front == null || pr < front.pr){
+            tmp.next = front;
+            front = tmp;
+            return;
+        }
+        else{
+            Node p = front;
+            while(p.next != null && p.next.pr < pr){
+                p = p.next;
+            }
+            tmp.next = p.next;
+            p.next = tmp;
+            return;
+        }
+    }
+    public int delete(){
+        int x;
+        if(front == null){
+            System.out.println("Queue Underflow");
+            System.exit(1);
+        }
+        x = front.data;
+        front = front.next;
+        System.gc();
+        return x;
+    }
     
 }
 
@@ -35,5 +62,10 @@ class PriorityQueue{
 public class Main{
     public static void main(String args[]){
         PriorityQueue pq = new PriorityQueue();
+        pq.insert(1,1);
+        pq.insert(2,0);
+        pq.insert(3,2);
+        pq.delete();
+        pq.display();
     }
 }
