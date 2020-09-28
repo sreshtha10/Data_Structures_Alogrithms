@@ -30,7 +30,7 @@ void display(){
         return;
     }
     int i = front;
-    if(front < rear){
+    if(front <= rear){
         while(i<=rear){
             printf("%d ",cq[i]);
             i += 1;
