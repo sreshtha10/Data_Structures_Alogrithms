@@ -1,10 +1,10 @@
 import java.util.*;
 public class Main{
 	public static void main(String args[]) {
-		int[] arr = {1,2,3,4,5};
-
-		System.out.println("Left Rotation "+Arrays.toString(rotateLeft(arr)));
-		System.out.println("Right Rotation "+Arrays.toString(rotateRight(arr)));
+		int[] arr1 = {1,2,3,4,5};
+		int [] arr2 = {6,7,8,9,10};
+		System.out.println("Left Rotation "+Arrays.toString(rotateLeft(arr1)));
+		System.out.println("Right Rotation "+Arrays.toString(rotateRight(arr2)));
 	}
 	public static int[] rotateLeft(int[] arr) {
 		int a,tmp = arr[arr.length-1];
