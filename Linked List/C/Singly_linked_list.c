@@ -220,6 +220,21 @@ struct node* reverse_by_iteration(struct node*start){
     return start;
 }
 
+//Reversing the SLL using Recursion 
+struct node *reverseR(struct node* ptr){
+    if(ptr == NULL){
+        return NULL;
+    }
+    if(ptr->link == NULL){
+        return ptr;
+    }
+    struct node* tmp = reverseR(ptr->link);
+    ptr->link->link = ptr;
+    ptr->link = NULL;
+    return tmp;
+    
+}
+
 
 //Insert elements in sorted manner.    
     
@@ -249,9 +264,5 @@ int main()
 {
     
     struct node *start = NULL;
-    start = add_at_beg(start,1);
-    start = add_at_end(start,2);
-    start = add_at_end(start,3);
-    printf("%d",length(start));
     return 0;
 }
