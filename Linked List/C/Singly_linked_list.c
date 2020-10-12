@@ -12,6 +12,7 @@
     8. reverse_by_iteration - To reverse a linked list using iteration.
     9. reverse_by_recursion - To reverse a linked list using iteration.
     10. insert_sorted - To insert elements in sorted manner.
+    11. length - Returns the length of the SLL.
     
     
 */
@@ -64,6 +65,14 @@ struct node *add_at_beg(struct node*start,int value)
 }//End of add_at_beg function
 
 
+//length
+int length(struct node* start){
+    if(start == NULL){
+        return 0;
+    }
+    return 1+length(start->link);
+}
+//end of the function
 
 //search function
 void search(struct node *start,int val)
@@ -240,5 +249,9 @@ int main()
 {
     
     struct node *start = NULL;
+    start = add_at_beg(start,1);
+    start = add_at_end(start,2);
+    start = add_at_end(start,3);
+    printf("%d",length(start));
     return 0;
 }
