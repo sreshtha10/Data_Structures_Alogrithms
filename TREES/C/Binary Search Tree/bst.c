@@ -108,4 +108,37 @@ int main(void){
     return 0;
 }
 
+// insertion
 
+Treenode* insert_nr(Treenode* root,int inkey){
+    Treenode* ptr,*par = NULL;
+    ptr = root;
+    while(ptr!=NULL){
+        par = ptr;
+        if(ikey > ptr->data){
+            ptr = ptr->rchild;
+        }
+        else if(ikey < ptr->data){
+            ptr = ptr->lchild;
+        }
+        else{
+            printf("DUPLICATE DATA\n");
+            return root;
+        }
+    }
+    Treenode* tmp = (Treenode*)malloc(sizeof(Treenode));
+    tmp->data = ikey;
+    tmp->lchild = NULL;
+    tmp->rchild = NULL;
+    if(par == NULL){
+        root= tmp;
+        return root;
+    }
+    else if(ikey > par->data){
+        par->lchild = tmp;
+    }
+    else{
+        par->rchild = tmp;
+    }
+    return root;
+}
