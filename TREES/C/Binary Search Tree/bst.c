@@ -57,3 +57,27 @@ Treenode* search_r(Treenode* root,int element){ // r - recursive
 }
 
 
+// Min and Max keys in BST
+
+Treenode* min_nr(Treenode* ptr){
+    if(ptr == NULL){
+        return NULL;
+    }
+    while(ptr->lchild != NULL){
+        ptr = ptr->lchild;
+    }
+    return ptr;
+}
+
+Treenode* min_r(Treenode* ptr){
+    if(ptr== NULL){
+        return NULL;
+    }
+    else if(ptr->lchild == NULL){
+        return ptr;
+    }
+    else{
+        min_r(ptr->lchild);
+    }
+}
+
