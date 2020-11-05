@@ -24,7 +24,7 @@ typedef struct treenode{
                
 */
 
-Treenode* search(Treenode* root,int element){
+Treenode* search_nr(Treenode* root,int element){   // nr - non recursive
     Treenode* ptr = root;
     while(ptr != NULL){
         if(ptr->data == element){
@@ -38,6 +38,22 @@ Treenode* search(Treenode* root,int element){
         }
     }
     return NULL; // element not found
+}
+
+
+Treenode* search_r(Treenode* root,int element){ // r - recursive
+    if(root == NULL){
+        return NULL; // element not found
+    }
+    if(root->data == element){
+        return root;
+    }
+    else if(element > root->data){
+        search_r(root->rchild,element);
+    }
+    else{
+        search_r(root->lchild,element);
+    }
 }
 
 
