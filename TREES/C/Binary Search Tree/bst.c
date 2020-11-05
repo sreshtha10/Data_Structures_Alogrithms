@@ -24,4 +24,20 @@ typedef struct treenode{
                
 */
 
+Treenode* search(Treenode* root,int element){
+    Treenode* ptr = root;
+    while(ptr != NULL){
+        if(ptr->data == element){
+            return ptr;
+        }
+        else if(ptr->data > element){
+            ptr = ptr->lchild;
+        }
+        else{
+            ptr = ptr->rchild;
+        }
+    }
+    return NULL; // element not found
+}
+
 
