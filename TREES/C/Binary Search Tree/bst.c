@@ -77,7 +77,35 @@ Treenode* min_r(Treenode* ptr){
         return ptr;
     }
     else{
-        min_r(ptr->lchild);
+        return min_r(ptr->lchild);
     }
 }
+
+Treenode* max_nr(Treenode* ptr){
+    if(ptr == NULL){
+        return NULL;
+    }
+    while(ptr->rchild != NULL){
+        ptr = ptr->rchild;
+    }
+    return ptr;
+}
+
+
+Treenode* max_r(Treenode* ptr){
+    if(ptr == NULL){
+        return NULL;
+    }
+    else if(ptr->rchild == NULL){
+        return ptr;
+    }
+    else{
+        return max_r(ptr->rchild);
+    }
+}
+
+int main(void){
+    return 0;
+}
+
 
