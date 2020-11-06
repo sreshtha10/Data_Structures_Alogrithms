@@ -186,6 +186,15 @@ Treenode* delete_nr(Treenode* root,int dkey){
     }
     else if(ptr->lchild == NULL && ptr->rchild == NULL){ // no child.
         // case 1
+        if(ptr == root){ // deletion of root node.
+            root = NULL;
+            return root;
+        }
+        else{
+            par = NULL;  // par pointer is the parent of ptr.
+            free(ptr);
+            return root;
+        }
     }
     else if(ptr->lchild == NULL || ptr->rchild == NULL){ // one child.
         // case 2.
