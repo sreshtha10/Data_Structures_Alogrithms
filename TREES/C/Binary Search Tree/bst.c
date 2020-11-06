@@ -142,3 +142,24 @@ Treenode* insert_nr(Treenode* root,int inkey){
     }
     return root;
 }
+
+
+Treenode* insert_r(Treenode* ptr,int ikey){
+    if(ptr == NULL){  // Base case.
+        ptr = (Treenode*)malloc(sizeof(Treenode));
+        ptr->data = ikey;
+        ptr->lchild = NULL;
+        ptr->rchild = NULL;
+    }
+    else if(ikey>ptr->data){
+        ptr->rchild = insert_r(Treenode* ptr->rchild,ikey);
+    }
+    else if(ikey < ptr->data){
+        ptr->lchild = insert_r(Treenode* ptr->lchild,ikey);
+        
+    }
+    else{
+        printf("DUPLICATE\n");
+    }
+    return ptr;
+}
