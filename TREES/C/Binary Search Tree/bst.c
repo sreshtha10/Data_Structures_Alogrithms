@@ -198,8 +198,21 @@ Treenode* delete_nr(Treenode* root,int dkey){
     }
     else if(ptr->lchild == NULL || ptr->rchild == NULL){ // one child.
         // case 2.
+        if(ptr == root){ // ptr is root node
+            if(ptr->lchild != NULL){
+                root = ptr->lchild;
+                free(ptr);
+                return root;
+            }
+            else{
+                root = ptr->rchild;
+                free(ptr);
+                return root;
+            }
+        }
+        
     }
-    else{
+    else{ // node to be deleted has two childs.
         // case 3.
     }
     
