@@ -17,6 +17,35 @@ typedef struct treenode{
 
 // traversal - same as binary tree - preorder, inorder, postorder.
 
+void preorder(Treenode* ptr){
+    if(ptr == NULL){ // Base Case;
+        return;
+    }
+    printf("%d ",ptr->data);
+    preorder(ptr->lchild);
+    preorder(ptr->rchild);
+}
+
+void inorder(Treenode* ptr){
+    if(ptr == NULL){
+        return;
+    }
+    inorder(ptr->lchild);
+    printf("%d ",ptr->data);
+    inorder(ptr->rchild);
+}
+
+void postorder(Treenode* ptr){
+    if(ptr == NULL){
+        return;
+    }
+    postorder(ptr->lchild);
+    postorder(ptr->rchild);
+    printf("%d ",ptr->data);
+}
+
+
+
 /* searching - * if the key = element, element is found.
                * if the key < element, search in left subtree
                * if the key > element, search in the right subtree.
@@ -106,7 +135,7 @@ Treenode* max_r(Treenode* ptr){
 
 // insertion
 
-Treenode* insert_nr(Treenode* root,int inkey){
+Treenode* insert_nr(Treenode* root,int ikey){
     Treenode* ptr,*par = NULL;
     ptr = root;
     while(ptr!=NULL){
@@ -148,10 +177,10 @@ Treenode* insert_r(Treenode* ptr,int ikey){
         ptr->rchild = NULL;
     }
     else if(ikey>ptr->data){
-        ptr->rchild = insert_r(Treenode* ptr->rchild,ikey);
+        ptr->rchild = insert_r(ptr->rchild,ikey);
     }
     else if(ikey < ptr->data){
-        ptr->lchild = insert_r(Treenode* ptr->lchild,ikey);
+        ptr->lchild = insert_r( ptr->lchild,ikey);
         
     }
     else{
@@ -235,5 +264,14 @@ Treenode* delete_nr(Treenode* root,int dkey){
 
 
 int main(void){
+    Treenode* root = NULL;
+    root = insert_r(root,1);
+    root = insert_r(root,2);
+    root - insert_r(root,3);
+    root = insert_r(root,0);
+    preorder(root);
+
+    
+    
     return 0;
 }
