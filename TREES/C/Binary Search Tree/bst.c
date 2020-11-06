@@ -210,6 +210,19 @@ Treenode* delete_nr(Treenode* root,int dkey){
                 return root;
             }
         }
+        else if(ptr == par->lchild){
+            if(ptr->lchild != NULL){
+                par->lchild = ptr->lchild;
+                free(ptr);
+                return root;
+            }
+            else{
+                par->lchild = ptr->rchild;
+                free(ptr);
+                return root;
+                
+            }
+        }
         
     }
     else{ // node to be deleted has two childs.
