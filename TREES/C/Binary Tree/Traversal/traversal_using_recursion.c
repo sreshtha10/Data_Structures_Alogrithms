@@ -188,12 +188,10 @@ Treenode* insert_r(Treenode* ptr,int ikey){
     return ptr;
 }
 
+// deletion 
+
+
 
 int main(void){
-    Treenode* root = NULL;
-    root = insert_r(root,1);
-    root = insert_r(root,2);
-    root = insert_r(root,3);
-    root = insert_r(root,0);
-    postorder(root);
+    return 0;
 }
