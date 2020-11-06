@@ -160,7 +160,12 @@ Treenode* insert_r(Treenode* ptr,int ikey){
     return ptr;
 }
 
-
+/* deletion - case 1.  Node to be deleted is a leaf
+              case 2. Node to be deleted has only 1 child.
+              case 3. Node to be deleted has 2 child.
+    */
+    
+    
 
 
 int main(void){
