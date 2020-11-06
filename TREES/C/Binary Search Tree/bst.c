@@ -1,5 +1,5 @@
+  
 /* Binary Search Tree is a node-based binary tree data structure which has the following properties:
-
 The left subtree of a node contains only nodes with keys lesser than the node’s key.
 The right subtree of a node contains only nodes with keys greater than the node’s key.
 The left and right subtree each must also be a binary search tree.*/
@@ -104,10 +104,6 @@ Treenode* max_r(Treenode* ptr){
     }
 }
 
-int main(void){
-    return 0;
-}
-
 // insertion
 
 Treenode* insert_nr(Treenode* root,int inkey){
@@ -135,10 +131,10 @@ Treenode* insert_nr(Treenode* root,int inkey){
         return root;
     }
     else if(ikey > par->data){
-        par->lchild = tmp;
+        par->rchild = tmp;
     }
     else{
-        par->rchild = tmp;
+        par->lchild = tmp;
     }
     return root;
 }
@@ -162,4 +158,11 @@ Treenode* insert_r(Treenode* ptr,int ikey){
         printf("DUPLICATE\n");
     }
     return ptr;
+}
+
+
+
+
+int main(void){
+    return 0;
 }
