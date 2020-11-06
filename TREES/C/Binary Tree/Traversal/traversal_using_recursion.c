@@ -133,13 +133,9 @@ Treenode* max_r(Treenode* ptr){
     }
 }
 
-int main(void){
-    return 0;
-}
-
 // insertion
 
-Treenode* insert_nr(Treenode* root,int inkey){
+Treenode* insert_nr(Treenode* root,int ikey){
     Treenode* ptr,*par = NULL;
     ptr = root;
     while(ptr!=NULL){
@@ -181,10 +177,10 @@ Treenode* insert_r(Treenode* ptr,int ikey){
         ptr->rchild = NULL;
     }
     else if(ikey>ptr->data){
-        ptr->rchild = insert_r(Treenode* ptr->rchild,ikey);
+        ptr->rchild = insert_r(ptr->rchild,ikey);
     }
     else if(ikey < ptr->data){
-        ptr->lchild = insert_r(Treenode* ptr->lchild,ikey);
+        ptr->lchild = insert_r(ptr->lchild,ikey);
         
     }
     else{
@@ -195,5 +191,7 @@ Treenode* insert_r(Treenode* ptr,int ikey){
 
 
 int main(void){
+    Treenode* root = NULL;
+
     return 0;
 }
