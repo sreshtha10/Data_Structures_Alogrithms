@@ -165,7 +165,38 @@ Treenode* insert_r(Treenode* ptr,int ikey){
               case 3. Node to be deleted has 2 child.
     */
     
+Treenode* delete_nr(Treenode* root,int dkey){
+    Treenode* ptr = root,*par = NULL;
+    while(ptr != NULL){
+        if(dkey == ptr->data){
+            break;
+        }
+        par = ptr;
+        if(dkey > ptr->data){
+            ptr = ptr->rchild;
+        }
+        else{
+            ptr = ptr->lchild;   
+        }
+    }
+    if(ptr == NULL) // element not found
+    {
+        printf("%d not found in the BST\n",dkey);
+        return root;
+    }
+    else if(ptr->lchild == NULL && ptr->rchild == NULL){ // no child.
+        // case 1
+    }
+    else if(ptr->lchild == NULL || ptr->rchild == NULL){ // one child.
+        // case 2.
+    }
+    else{
+        // case 3.
+    }
     
+    
+    return root;
+}
 
 
 int main(void){
