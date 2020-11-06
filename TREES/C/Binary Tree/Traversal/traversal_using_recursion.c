@@ -157,13 +157,12 @@ Treenode* insert_nr(Treenode* root,int ikey){
     tmp->rchild = NULL;
     if(par == NULL){
         root= tmp;
-        return root;
     }
     else if(ikey > par->data){
-        par->lchild = tmp;
+        par->rchild = tmp;
     }
     else{
-        par->rchild = tmp;
+        par->lchild = tmp;
     }
     return root;
 }
@@ -192,6 +191,9 @@ Treenode* insert_r(Treenode* ptr,int ikey){
 
 int main(void){
     Treenode* root = NULL;
-
-    return 0;
+    root = insert_r(root,1);
+    root = insert_r(root,2);
+    root = insert_r(root,3);
+    root = insert_r(root,0);
+    postorder(root);
 }
