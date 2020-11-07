@@ -272,12 +272,12 @@ Treenode* delete_nr(Treenode* root,int dkey){
     else{ // node to be deleted has two childs.
         // case 3.
         int x;
-        Treenode* tmp = ptr,tmp2 = NULL;
+        Treenode* tmp = ptr->rchild,*tmp2 = ptr->rchild;
         while(tmp->lchild != NULL){
             tmp2 = tmp;
             tmp = tmp->lchild;
         }
-        int x = tmp->data;
+        x = tmp->data;
         tmp2->lchild = NULL;
         free(tmp);
         ptr->data = x;
@@ -294,12 +294,15 @@ Treenode* delete_nr(Treenode* root,int dkey){
 
 int main(void){
     Treenode* root = NULL;
-    root = insert_r(root,1);
-    root = insert_r(root,2);
-    root - insert_r(root,3);
-    root = insert_r(root,0);
+    root = insert_r(root,10);
+    root = insert_r(root,7);
+    root = insert_r(root,8);
+    root = insert_r(root,9);
+    root = insert_r(root,12);
+    root - insert_r(root,11);
+    root = insert_r(root,13);
     //preorder(root);
-    root = delete_nr(root,2);
+    root = delete_nr(root,10);
     preorder(root);
 
     
