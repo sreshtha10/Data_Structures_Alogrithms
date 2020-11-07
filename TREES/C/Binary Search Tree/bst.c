@@ -215,19 +215,21 @@ Treenode* delete_nr(Treenode* root,int dkey){
     }
     else if(ptr->lchild == NULL && ptr->rchild == NULL){ // no child.
         // case 1
-        if(ptr == root){ // deletion of root node.
+        if(par == NULL){ // root node to be deleted
             root = NULL;
-            return root;
+        }
+        else if(par->lchild == ptr){
+            par->lchild = NULL;
         }
         else{
-            par = NULL;  // par pointer is the parent of ptr.
-            free(ptr);
-            return root;
+            par->rchild = NULL;
         }
+        free(ptr);
+        return root;
     }
     else if(ptr->lchild == NULL || ptr->rchild == NULL){ // one child.
         // case 2.
-        if(ptr == root){ // ptr is root node
+        if(par == NULL){ // ptr is root node
             if(ptr->lchild != NULL){
                 root = ptr->lchild;
                 free(ptr);
@@ -252,6 +254,19 @@ Treenode* delete_nr(Treenode* root,int dkey){
                 
             }
         }
+        else{
+            if(ptr->lchild != NULL){
+                par->rchild = ptr->lchild;
+                free(ptr);
+                return root;
+            }
+            else{
+                par->rchild = ptr->rchild;
+                free(ptr);
+                return root;
+                
+            }
+        }
         
     }
     else{ // node to be deleted has two childs.
@@ -267,8 +282,10 @@ int main(void){
     Treenode* root = NULL;
     root = insert_r(root,1);
     root = insert_r(root,2);
-    root - insert_r(root,3);
-    root = insert_r(root,0);
+    //root - insert_r(root,3);
+    //root = insert_r(root,0);
+    //preorder(root);
+    root = delete_nr(root,1);
     preorder(root);
 
     
