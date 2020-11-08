@@ -39,6 +39,26 @@ Treenode* inorder_predecessor(Treenode* ptr){
     return ptr;
 }
 
+
+void inorder_traversal(Treenode* root){
+    Treenode* ptr;
+    if(root == NULL){
+        printf("Tree is empty\n");
+        return;
+    }
+    ptr= root;
+    while(ptr->lchild != NULL){
+        ptr = ptr->lchild;
+    }
+    while(ptr->lthread == false){
+        printf("%d ",ptr->data);
+        ptr = inorder_sucessor(ptr);
+    }
+    printf("\n");
+    return;
+}
+
 int main(void){
+    Treenode* root = NULL;
     return 0;
 }
