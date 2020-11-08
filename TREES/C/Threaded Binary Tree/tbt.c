@@ -47,10 +47,10 @@ void inorder_traversal(Treenode* root){
         return;
     }
     ptr= root;
-    while(ptr->lchild != NULL){
+    while(ptr->lthread == false){
         ptr = ptr->lchild;
     }
-    while(ptr->lthread == false){
+    while(ptr != NULL){
         printf("%d ",ptr->data);
         ptr = inorder_sucessor(ptr);
     }
