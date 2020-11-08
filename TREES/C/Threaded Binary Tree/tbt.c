@@ -16,9 +16,28 @@ typedef struct treenode{ // we will use boolean data types to differentiate b/w 
     struct treenode* rchild;
 }Treenode;
 
+Treenode* inorder_sucessor(Treenode* ptr){
+    if(ptr->rthread == true){
+        return ptr->rchild;
+    }
+    ptr = ptr->rchild;
+    while(ptr->lthread == false){
+        ptr = ptr->lchild;
+    }
+    return ptr;
+}
 
 
-
+Treenode* inorder_predecessor(Treenode* ptr){
+    if(ptr->lthread == true){
+        return ptr->lchild;
+    }
+    ptr  = ptr->lchild;
+    while(ptr->rthread == false){
+        ptr = ptr->rchild;
+    }
+    return ptr;
+}
 
 int main(void){
     return 0;
