@@ -6,6 +6,15 @@ In threaded binary tree, these n+1 NULL links will contains the address of their
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct treenode{
-    
-}
+typedef enum{ true,false}boolean;
+
+typedef struct treenode{ // we will use boolean data types to differentiate b/w threads and actual child.
+    boolean lthread;
+    struct treenode* lchild;
+    int deta;
+    boolean rthread;
+    struct treenode* rchild;
+}Treenode;
+
+
+
