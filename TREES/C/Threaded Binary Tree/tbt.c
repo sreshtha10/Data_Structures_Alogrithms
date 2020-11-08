@@ -18,3 +18,8 @@ typedef struct treenode{ // we will use boolean data types to differentiate b/w 
 
 
 
+
+
+int main(void){
+    return 0;
+}
