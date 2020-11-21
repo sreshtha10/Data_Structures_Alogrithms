@@ -11,7 +11,7 @@ typedef enum{ true,false}boolean;
 typedef struct treenode{ // we will use boolean data types to differentiate b/w threads and actual child.
     boolean lthread;
     struct treenode* lchild;
-    int deta;
+    int data;
     boolean rthread;
     struct treenode* rchild;
 }Treenode;
