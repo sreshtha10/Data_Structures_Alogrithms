@@ -158,16 +158,36 @@ Treenode *case_b(Treenode* root,Treenode*ptr,Treenode*par){
         par->rchild = child;
     }
     if(ptr->lthread == false){
-        p->right = s;
+        p->rchild = s;
     }
     else{
         if(ptr->rthread == false){
-            s->left = p;
+            s->lchild = p;
         }
     }
     free(ptr);
     return root;
 }
+
+Treenode* case_c(Treenode*root,Treenode*ptr,Treenode*par){
+    Treenode* succ,*parsucc;
+    parsucc = ptr;
+    succ = ptr->rchild;
+    while(succ->lchild != NULL){
+        parsucc = succ;
+        succ = succ->lchild;
+    }
+    ptr->data = succ->data;
+    if(succ->lthread == true && succ->rthread== true){
+        root =case_a(root,succ,parsucc);
+    }
+    else{
+        root = case_b(root,succ,parsucc);
+    }
+    return root;
+}
+
+
 
 int main(void){
     Treenode* root = NULL;
