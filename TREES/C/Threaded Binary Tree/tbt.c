@@ -148,10 +148,23 @@ Treenode *case_b(Treenode* root,Treenode*ptr,Treenode*par){
     }
     s = inorder_sucessor(ptr);
     p = inorder_predecessor(ptr);
-    
-    
-    
-    
+    if(par == NULL){
+        root = child;
+    }
+    else if(ptr == par->lchild){
+        par->lchild = child;
+    }
+    else{
+        par->rchild = child;
+    }
+    if(ptr->lthread == false){
+        p->right = s;
+    }
+    else{
+        if(ptr->rthread == false){
+            s->left = p;
+        }
+    }
     free(ptr);
     return root;
 }
