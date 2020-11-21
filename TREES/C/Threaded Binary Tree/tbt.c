@@ -188,6 +188,50 @@ Treenode* case_c(Treenode*root,Treenode*ptr,Treenode*par){
 }
 
 
+Treenode* delete(Treenode* root,int element){
+    Treenode* ptr =root,*par = NULL;
+    if(ptr == NULL){
+        printf("Tree is already empty\n");
+        return root;
+    }
+    while(ptr != NULL){
+        if(element == ptr->data){
+            break;
+        }
+        par = ptr;
+        if(element < ptr->data){
+            if(ptr->lthread == false){
+                ptr =ptr->lchild;
+            }
+            else{
+                printf("Element is not present in the tree\n");
+                return root;
+            }
+        }
+        else{
+            if(ptr->rthread == false){
+                ptr =ptr->rchild;
+            }
+            else{
+                printf("Element is not present in the tree\n");
+                return root;
+            }
+        }
+        
+    }
+    if(ptr->lthread == true && ptr->rthread == true){
+        root = case_a(root,ptr,par);
+    }
+    else if(ptr->lthread == false && ptr->rthread == false){
+        root = case_c(root,ptr,par);
+    }
+    else{
+        root = case_b(root,ptr,par);
+    }
+    return root;
+}
+
+
 
 int main(void){
     Treenode* root = NULL;
@@ -196,6 +240,7 @@ int main(void){
     root = insert(root,0);
     root = insert(root,5);
     root = insert(root,4);
+    delete(root,5);
     inorder_traversal(root);
     return 0;
 }
