@@ -16,6 +16,7 @@ typedef struct treenode{ // we will use boolean data types to differentiate b/w 
     struct treenode* rchild;
 }Treenode;
 
+
 Treenode* inorder_sucessor(Treenode* ptr){
     if(ptr->rthread == true){
         return ptr->rchild;
@@ -116,5 +117,11 @@ Treenode* insert(Treenode* root, int element){
 
 int main(void){
     Treenode* root = NULL;
+    root = insert(root,1);
+    root = insert(root,2);
+    root = insert(root,0);
+    root = insert(root,5);
+    root = insert(root,4);
+    inorder_traversal(root);
     return 0;
 }
