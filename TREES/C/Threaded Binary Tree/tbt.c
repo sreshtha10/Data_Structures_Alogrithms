@@ -121,8 +121,24 @@ Treenode* insert(Treenode* root, int element){
 */
 
 Treenode* case_a(Treenode* root,Treenode* ptr, Treenode* par){
-    
+    if(par == NULL){
+        root = NULL;
+    }
+    else if(par->lchild == ptr)  //left child is to be deleted.
+    {
+        par->lthread = true;
+        par->lchild = ptr->lchild;
+    }
+    else{
+        par->rthread = true;
+        par->rchild  = ptr->rchild;
+    }
+    free(ptr);
+    return root;
 }
+
+
+
 
 int main(void){
     Treenode* root = NULL;
