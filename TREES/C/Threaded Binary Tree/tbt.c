@@ -114,6 +114,15 @@ Treenode* insert(Treenode* root, int element){
 }
 
 
+/* Deletion in threaded BST
+    case 1. Node to be deleted is a leaf.
+    case 2. Node to be deleted has one child
+    case 3. Node to be deleted has two children.
+*/
+
+Treenode* case_a(Treenode* root,Treenode* ptr, Treenode* par){
+    
+}
 
 int main(void){
     Treenode* root = NULL;
