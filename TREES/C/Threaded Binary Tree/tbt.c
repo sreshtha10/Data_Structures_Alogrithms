@@ -58,6 +58,62 @@ void inorder_traversal(Treenode* root){
     return;
 }
 
+
+Treenode* insert(Treenode* root, int element){
+    Treenode *tmp,*par = NULL,*ptr;
+    ptr = root;
+    // first we will check if the element already exists
+    while(ptr != NULL){
+        if(element == ptr->data){
+            printf("element already exists\n");
+            return root;
+        }
+        par = ptr;
+        if(element < ptr->data){
+            if(ptr->lthread == false){
+                ptr = ptr->lchild;
+            }
+            else{
+                    break;
+            }
+        }
+        else{
+            if(ptr->rthread == false){
+                ptr = ptr->rchild;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    // if element is not already there we will insert it.
+    tmp = (Treenode*)malloc(sizeof(Treenode));
+    tmp->data = element;
+    tmp->rthread = true;
+    tmp->lthread = true;
+ 
+    if(par == NULL){   // tree is empty.
+        root = tmp;
+        tmp->lchild = NULL;
+        tmp->rchild = NULL;
+    }
+    else if(element < par->data){     // insertion in left subtree.
+        par->lthread = false;
+        tmp->lchild = par->lchild;
+        tmp->rchild = par;
+        par->lchild = tmp;
+    } 
+    else{                   // insertion in left subtree.
+        par->rthread = false;
+        tmp->rchild = par->rchild;
+        tmp->lchild = par;
+        par->rchild = tmp;
+    }
+    return root;
+}
+
+
+
 int main(void){
     Treenode* root = NULL;
     return 0;
