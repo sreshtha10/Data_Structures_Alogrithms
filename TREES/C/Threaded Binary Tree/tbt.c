@@ -138,7 +138,23 @@ Treenode* case_a(Treenode* root,Treenode* ptr, Treenode* par){
 }
 
 
-
+Treenode *case_b(Treenode* root,Treenode*ptr,Treenode*par){
+    Treenode *child,*s,*p;
+    if(ptr->lthread == false){
+        child = ptr->lchild;
+    }
+    else{
+        child  = ptr->rchild;
+    }
+    s = inorder_sucessor(ptr);
+    p = inorder_predecessor(ptr);
+    
+    
+    
+    
+    free(ptr);
+    return root;
+}
 
 int main(void){
     Treenode* root = NULL;
