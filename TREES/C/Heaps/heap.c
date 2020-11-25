@@ -42,5 +42,8 @@ int main(void){
     int arr[100];
     int hsize = 0;
     arr[0] = MAX_VAL;
+    insert(arr,25,&hsize);
+    insert(arr,35,&hsize);
+    display(arr,hsize);
     return 0;
 }
