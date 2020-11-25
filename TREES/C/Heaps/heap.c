@@ -18,14 +18,24 @@ void display(int arr[],int hsize){
     return;
 }
 
+void restoreUp(int arr[],int i){
+    int k = arr[i];
+    int par = i/2;
+    while(k > arr[par]){
+        arr[i] = arr[par];
+        i = par;
+        par = i/2;
+    }
+    arr[i] = k;
+    return;
+}
 
-
-
-
-
-
-
-
+void insert(int arr[],int key,int* p_hsize){
+    *(p_hsize) += 1;
+    arr[*(p_hsize)] = key;
+    restoreUp(arr,*p_hsize);
+    return;
+}
 
 
 int main(void){
