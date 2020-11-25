@@ -37,6 +37,9 @@ void insert(int arr[],int key,int* p_hsize){
     return;
 }
 
+void restoreDown(int arr[], int i);
+
+void delete(int arr[],int* p_hsize);
 
 int main(void){
     int arr[100];
