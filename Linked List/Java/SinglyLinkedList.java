@@ -97,6 +97,22 @@ class LinkedList{
             head = p;
             return;
         }
+    
+    	public Node reverseRecursive(Node p) {
+		// base case
+		if(p == null) {
+			return null;
+		}
+		if(p.next == null) {
+			this.head = p;
+			return p;
+		}
+		
+		Node tmp = reverseRecursive(p.next);
+		p.next.next = p;
+		p.next = null;
+		return tmp;
+	}
         
 }
 
