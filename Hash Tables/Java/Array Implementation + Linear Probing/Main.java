@@ -5,17 +5,17 @@
 package project0;
 
 class ArrayHashTable{
-	private Employee[] hashTable;
+	private StoredEmployee[] hashTable;
 	
 	public ArrayHashTable() {
 		//default 10 capacity
-		hashTable = new Employee[10];
+		hashTable = new StoredEmployee[10];
 		
 	}
 	
 	public ArrayHashTable(int capacity) {
 		
-		hashTable = new Employee[capacity];
+		hashTable = new StoredEmployee[capacity];
 	}
 	
 	private int hashKey(String key) {
@@ -48,21 +48,65 @@ class ArrayHashTable{
 			System.out.println("Not enough space in Hash Table");
 		}
 		else {
-			hashTable[hashedKey] = employee;
+			hashTable[hashedKey] = new StoredEmployee(key, employee);
 		}
 		
 	}
 	
 	
 	public Employee get(String key) {
-		return hashTable[hashKey(key)];
+		int hashedKey = findKey(key);
+		if(hashedKey == -1) {
+			return null;
+		}
+		else {
+			return hashTable[hashedKey].employee;
+		} 
+		
+	}
+	
+	
+	private int findKey(String key) {
+		int hashedKey = hashKey(key);
+		
+		if(hashTable[hashedKey] != null  && hashTable[hashedKey].key.equals(key)) {
+			return hashedKey;
+		}
+		
+		
+		int stopIndex = hashedKey;
+			
+		if(hashedKey == hashTable.length -1) {
+			hashedKey = 0;
+		}
+		else {
+			hashedKey ++;
+		}
+		
+		
+		
+		while(occupied(hashedKey) && hashedKey != stopIndex && !hashTable[hashedKey].key.equals(key)) {
+			hashedKey = (hashedKey +1)% hashTable.length;
+				
+		}
+		
+		if(hashTable[hashedKey].key.equals(key)) {
+			return hashedKey;
+		}
+		else {
+			return -1;
+		}
+			
 	}
 	
 	
 	public void printHashTable() {
 		for(int i=0;i<hashTable.length;i++) {
 			if(hashTable[i] != null) {
-				System.out.println(hashTable[i].getFirstName()+" "+hashTable[i].getLastName()+" "+hashTable[i].getId());
+				System.out.println(hashTable[i].employee.getFirstName()+" "+hashTable[i].employee.getLastName()+" "+hashTable[i].employee.getId());
+			}
+			else {
+				System.out.println("empty");
 			}
 			
 		}
@@ -76,7 +120,7 @@ class ArrayHashTable{
 	
 }
 
-
+ 
 
 
 public class Main{
@@ -99,6 +143,9 @@ public class Main{
 		
 		
 		hashTable.printHashTable();
+		
+		
+		System.out.println(hashTable.get("Smith"));
 		
 		
 	}
