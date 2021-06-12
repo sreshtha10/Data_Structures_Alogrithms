@@ -90,7 +90,7 @@ class ArrayHashTable{
 				
 		}
 		
-		if(hashTable[hashedKey].key.equals(key)) {
+		if(hashTable[hashedKey].key.equals(key) && hashTable[hashedKey] != null) {
 			return hashedKey;
 		}
 		else {
@@ -118,6 +118,38 @@ class ArrayHashTable{
 	}
 	
 	
+	
+	
+	public Employee remove(String key) {
+		int hashedKey = findKey(key);
+		
+		if(hashedKey == -1) {
+			return null;
+		}
+		
+		Employee empl = hashTable[hashedKey].employee;
+		
+		hashTable[hashedKey] = null;
+		
+		
+		// rehashing
+
+		 StoredEmployee[] oldHashTable = this.hashTable;
+		 
+		 this.hashTable = new StoredEmployee[oldHashTable.length];
+		 
+		
+		 for(int i=0;i<this.hashTable.length;i++) {
+			 if(oldHashTable[i] != null) {
+				 this.put(oldHashTable[i].key,oldHashTable[i].employee);
+			 }
+		 }
+		 
+		 return empl;
+		
+	}
+	
+	
 }
 
  
@@ -141,13 +173,13 @@ public class Main{
 		hashTable.put(billEnd.getLastName(), billEnd);
 		
 		
-		
 		hashTable.printHashTable();
-		
 		
 		System.out.println(hashTable.get("Smith"));
 		
 		
+		System.out.println(hashTable.remove("Jones"));
+			
 	}
 	
 }
