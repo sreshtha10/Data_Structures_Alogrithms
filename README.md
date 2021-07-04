@@ -1,3 +1,5 @@
-# Data_Structures
+# Data Structures and Algorithms
 
-A set of powerful data structures.
+A set of powerful data structures and algorithms.
+
+___
