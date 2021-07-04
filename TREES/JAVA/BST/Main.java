@@ -284,8 +284,33 @@ class Tree {
 		}
 		
 		else {
-			// currNode has 2 children.
-			return null;
+			tmp = currNode.left;
+			Node tmp2 = currNode;
+			Node parentTmp = currNode;
+			// we will do by finding the inorder successor i.e. right most element of left subtree.
+			while(tmp.right != null) {
+				parentTmp = tmp;
+				tmp = tmp.right;
+			}
+			
+			if(parentTmp == currNode) {
+				currNode.left = null;
+			}
+			else {
+				parentTmp.right = null;
+			}
+			
+			
+			tmp2 = currNode;
+			
+			currNode.key = tmp.key;
+			tmp = null;
+			System.gc();
+			
+			return tmp2;
+			
+			
+			
 		}
 		
 	}
@@ -328,7 +353,7 @@ public class Main {
 		System.out.println();
 		
 		
-		System.out.println(tree.delete(29));
+		System.out.println(tree.delete(25));
 		System.out.println();
 		
 		tree.inOrder();
