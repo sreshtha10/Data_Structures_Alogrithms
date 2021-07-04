@@ -1,0 +1,17 @@
+Ques 1 : Fibonacci series- optimization of fib series using memoization
+
+Ques 2: Grid Traveler 
+For a given grid, traveler has to travel from top left to bottom right. He can only move down and right.
+Find total no of ways he can travel. (optimization using memoization) 
+
+Ques 3: canSum 
+For a given target sum and array. Find if it is possible for the array elements to add up to the given target sum.
+(optimization using memoization.)
+
+Ques 4: howSum
+For a given target sum and array. Find any combination for the array elements to add up to the given target sum.
+(optimization using memoization.)
+
+Ques 5: bestSum
+For a given target sum and array. Find the best combination(combination with least elements) for the array elements to add up to the given target sum.
+(optimization using memoization.)s
