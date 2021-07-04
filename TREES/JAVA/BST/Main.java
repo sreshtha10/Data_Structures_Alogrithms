@@ -88,6 +88,33 @@ class Node{
 	}
 	
 	
+	public Node getNode(int value) {
+		if(this.key == value) {
+			return this;
+		}
+		
+		if(this.key > value) {
+			if(this.left != null) {
+				return this.left.getNode(value);
+			}
+			else {
+				//not found.
+				return null;
+			}
+		}
+		else {
+			if(this.right != null) {
+				return this.right.getNode(value);
+			}
+			else {
+				//not found.
+				return null;
+			}
+		}
+		
+	}
+	
+	
 
 	
 }
@@ -180,6 +207,12 @@ class Tree{
 	
 	
 	
+	//search
+	public Node get(int value) {
+		return root.getNode(value);
+	}
+	
+	
 	
 	
 }
@@ -203,6 +236,9 @@ public class Main{
 		
 		System.out.println();
 		tree.levelOrder();
+		System.out.println();
+		System.out.println(tree.get(2));
+			
 		
 	}
 }
