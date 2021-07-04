@@ -209,7 +209,42 @@ class Tree{
 	
 	//search
 	public Node get(int value) {
-		return root.getNode(value);
+		if(root != null) {
+			return root.getNode(value);
+		}
+		else {
+			return null;
+		}
+		
+	}
+	
+	
+	//node with min key
+	public Node getMin() {
+		Node tmp = root;
+		if(tmp != null) {
+			while(tmp.left != null) {
+				tmp = tmp.left;
+			}
+			return tmp;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	//node with max key
+	public Node getMax() {
+		Node tmp = root;
+		if(tmp != null) {
+			while(tmp.right != null) {
+				tmp = tmp.right;
+			}
+			return tmp;
+		}
+		else {
+			return null;
+		}
 	}
 	
 	
@@ -223,6 +258,7 @@ class Tree{
 public class Main{
 	public static void main(String args[]) {
 		Tree tree = new Tree(5);
+		
 		tree.insertNode(1);
 		tree.insertNode(2);
 		tree.insertNode(6);
@@ -230,14 +266,25 @@ public class Main{
 		
 		tree.preOrder();
 		System.out.println();
+		
 		tree.inOrder();
 		System.out.println();
-		tree.postOrder();
 		
+		tree.postOrder();
 		System.out.println();
+		
 		tree.levelOrder();
 		System.out.println();
+		
 		System.out.println(tree.get(2));
+		System.out.println();
+		
+		System.out.println(tree.getMin().key);
+		System.out.println();
+		
+		System.out.println(tree.getMax().key);
+		System.out.println();
+		
 			
 		
 	}
