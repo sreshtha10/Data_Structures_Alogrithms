@@ -1,3 +1,6 @@
+
+//Note - for disconnected graph use the approach for  checking connected components.
+
 package project0;
 
 import java.util.Iterator;
