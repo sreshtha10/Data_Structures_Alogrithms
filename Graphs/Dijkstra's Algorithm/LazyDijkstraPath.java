@@ -1,6 +1,5 @@
 package project0;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -66,7 +65,7 @@ class Graph {
 		
 
 		PriorityQueue<Pair> pq = new PriorityQueue<Pair>(new CustComparator()); // priority queue which stores pairs of
-																				// vertex with their shortest distance.
+	        // vertex with their shortest distance.
 		pq.add(new Pair(source, 0));
 		dist[source] = 0;
 
@@ -76,7 +75,12 @@ class Graph {
 			vis[currVertex] = true;
 			// for each neighbor : update distance if shortest path is possible and add
 			// them to queue.
-
+			
+			
+			if(dist[currVertex] < currPair.shortestDist) {
+				continue;
+			}
+			
 			for (Edge edge : adj[currVertex]) {
 				
 				int next = edge.destination;
@@ -84,10 +88,6 @@ class Graph {
 				//if already visited continue
 				if(vis[next]) {
 					continue;
-				}
-				
-				if(vis[end]) {
-					break;
 				}
 				
 				int newDist = weight+dist[currVertex];
@@ -98,6 +98,11 @@ class Graph {
 					pq.add(new Pair(next,newDist));
 					prev[next]= currVertex;
 				}
+			}
+			
+			//once we reacher end node, no need to find min distances for other nodes.
+			if(currVertex == end) {
+				break;
 			}
 
 		}
