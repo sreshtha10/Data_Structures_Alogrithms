@@ -86,6 +86,10 @@ class Graph {
 			vis[currVertex] = true;
 			// for each neighbor : update distance if shortest path is possible and add
 			// them to queue.
+			
+			if(dist[currVertex] < currPair.shortestDist){
+				continue;
+			}
 
 			for (Edge edge : adj[currVertex]) {
 				
