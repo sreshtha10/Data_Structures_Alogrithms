@@ -1,8 +1,3 @@
-// KMP (knuth-morris-prath) string matching algo.
-package project0;
-
-import java.util.Arrays;
-
 class KMP{
 	String string;
 	String pattern;
