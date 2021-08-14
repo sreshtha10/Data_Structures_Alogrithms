@@ -12,13 +12,9 @@ class KMP{
 	
 	public int kmp() {
 		this.createLPS();
-		//System.out.println(Arrays.toString(this.lps));
 		int i = 0,j= 0;
 		
 		while(i<this.string.length() && j<this.pattern.length()) {
-			
-			
-			//System.out.println(i+" "+j);
 			if(this.string.charAt(i) == this.pattern.charAt(j)) {
 				i++;
 				j++;
@@ -37,9 +33,7 @@ class KMP{
 		}
 		
 		
-		return -1;
-		
-		
+		return -1;	
 	}
 	
 	
@@ -48,9 +42,6 @@ class KMP{
 		this.lps[0] = 0;
 		
 		while(j<this.pattern.length()) {
-			
-			
-			
 			if(this.pattern.charAt(i) == this.pattern.charAt(j)) {
 				this.lps[j] = i+1;
 				i++;
