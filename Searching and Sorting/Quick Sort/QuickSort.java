@@ -1,4 +1,3 @@
-/* package codechef; // don't place package name! */
 //Quick Sort
 import java.util.*;
 import java.lang.*;
