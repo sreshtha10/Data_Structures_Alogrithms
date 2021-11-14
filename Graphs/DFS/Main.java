@@ -1,5 +1,6 @@
 
 //Note - for disconnected graph use the approach for  checking connected components.
+// Assuming node starts from 0..
 
 package project0;
 
